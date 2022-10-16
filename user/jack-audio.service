@@ -1,0 +1,9 @@
+[Unit]
+Description=JACK server
+
+[Service]
+ExecStart=/usr/bin/jack_control start
+ExecStop=/usr/bin/jack_control stop
+Type=oneshot
+RemainAfterExit=yes
+

@@ -1,0 +1,38 @@
+
+- defaults:
+    link:
+        create: True
+        relink: True
+
+- clean: ['~']
+- link:
+    ~/.abook/abookrc: abookrc
+    ~/.bash_profile: bash_profile
+    ~/.bashrc: bashrc
+    ~/.config/alacritty/alacritty.yml: alacritty.yml
+    ~/.config/fish/config.fish: config.fish
+    ~/.config/gtk-3.0/settings.ini: gtk3-settings.ini
+    ~/.config/mutt/custom.muttrc: custom.muttrc
+    ~/.config/nvim/init.vim: init.vim
+    ~/.config/nvim/lua/plugins.lua: nvim-plugins.lua
+    ~/.config/pulse/daemon.conf: pulse-daemon.conf
+    ~/.config/sway/config: sway-config
+    ~/.config/systemd/user: user
+    ~/.config/vifm/colors/dracula.vifm: dracula.vifm
+    ~/.config/vifm/vifmrc: vifmrc
+    ~/.config/waybar/config: waybar-config
+    ~/.gitconfig: gitconfig
+    ~/.gnupg/gpg-agent.conf: gpg-agent.conf
+    ~/.inputrc: inputrc
+    ~/.lesskey: lesskey
+    ~/.mplayer/config: mplayer-config
+    ~/.tmux.conf: tmux.conf
+    ~/.urlview: urlview
+    ~/.vimrc: vimrc
+    ~/.weechat/buflist.conf: weechat-buflist.conf
+    ~/.weechat/weechat.conf: weechat.conf
+    ~/.zshrc: zshrc
+    ~/bin/pipewire-profile.sh: pipewire-profile.sh
+    ~/bin/pipewire-volume.sh: pipewire-volume.sh
+    ~/bin/swap-workspaces.sh: swap-workspaces.sh
+

@@ -1,0 +1,34 @@
+bind index,pager u noop
+bind pager Mi noop
+bind pager Ms noop
+bind pager Mt noop
+
+# General rebindings
+bind generic,index n next-entry
+bind generic,index e previous-entry
+bind attach i view-mailcap
+bind pager,attach m exit
+bind pager n next-line
+bind pager e previous-line
+bind pager i view-attachments
+bind index S delete-message
+bind index L undelete-message
+bind index I limit
+bind index i display-message
+macro browser m '<change-dir><kill-line>..<enter>' "Go to parent folder"
+bind index,pager M view-raw-message
+bind browser i select-entry
+bind generic,index,pager,browser s half-down
+bind generic,index,pager,browser l half-up
+bind index,pager R sync-mailbox
+bind index,pager P group-reply
+
+# Sidebar mappings
+bind index,pager \Ce sidebar-prev
+bind index,pager \Cn sidebar-next
+bind index,pager \Cy sidebar-open
+bind index,pager \C; sidebar-prev-new
+bind index,pager \Ck sidebar-next-new
+bind index,pager V sidebar-toggle-visible
+
+

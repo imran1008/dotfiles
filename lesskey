@@ -1,0 +1,111 @@
+#command
+	\r        forw-line
+	\n        forw-line
+	f        forw-line
+	n        forw-line
+	\kd    forw-line
+	^F        forw-line
+	^K        forw-line
+	e        back-line
+	j        back-line
+	^J        back-line
+	^E        back-line
+	^;        back-line
+	N        forw-line-force
+	E        back-line-force
+	J        back-line-force
+	s        forw-scroll
+	^S        forw-scroll
+	l        back-scroll
+	^L        back-scroll
+	\40    forw-screen
+	t        forw-screen
+	^T        forw-screen
+	^D        forw-screen
+	\kD    forw-screen
+	v        back-screen
+	^V        back-screen
+	\ed        back-screen
+	\kU    back-screen
+	z        forw-window
+	w        back-window
+	\e\40        forw-screen-force
+	T        forw-forever
+	P        repaint-flush
+	p        repaint
+	^P        repaint
+	^I        repaint
+	\el        undo-hilite
+	g        goto-line
+	\kh    goto-line
+	<        goto-line
+	\e<        goto-line
+	;        percent
+	%        percent
+	\e[        left-scroll
+	\e]        right-scroll
+	\e(        left-scroll
+	\e)        right-scroll
+	{        forw-bracket {}
+	}        back-bracket {}
+	(        forw-bracket ()
+	)        back-bracket ()
+	[        forw-bracket []
+	]        back-bracket []
+	\e^T        forw-bracket
+	\e^V        back-bracket
+	G        goto-end
+	\e>        goto-end
+	>        goto-end
+		\ke    goto-end
+	=        status
+	^G        status
+	:t        status
+	/        forw-search
+	?        back-search
+	\e/        forw-search *
+	\e?        back-search *
+	k        repeat-search
+	\ek        repeat-search-all
+	K        reverse-search
+	\eK        reverse-search-all
+	&        filter
+	h        set-mark
+	'        goto-mark
+	^X^X        goto-mark
+	F        examine
+	:f        examine
+	^X^D        examine
+	:k        next-file
+	:;        prev-file
+	b        next-tag
+	B        prev-tag
+	:x        index-file
+	:s        remove-file
+	-        toggle-option
+	:b        toggle-option t
+	r        toggle-option o
+	_        display-option
+	|        pipe
+	d        visual
+	!        shell
+	+        firstcmd
+	M        help
+	m        help
+	D        version
+	0        digit
+	1        digit
+	2        digit
+	3        digit
+	4        digit
+	5        digit
+	6        digit
+	7        digit
+	8        digit
+	9        digit
+	q        quit
+	Q        quit
+	:q        quit
+	:Q        quit
+	ZZ        quit
+

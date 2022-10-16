@@ -1,0 +1,13 @@
+[user]
+	name = Imran Haider
+[core]
+	editor = nvim
+	autocrlf = input
+[merge]
+	conflictstyle = diff3
+[http]
+	cookiefile = ~/.gitcookies
+[init]
+	defaultBranch = master
+[credential]
+	helper = !pass-git-helper $@

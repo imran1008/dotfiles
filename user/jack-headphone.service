@@ -1,0 +1,10 @@
+[Unit]
+Description=JACK headphone sink
+Requires=jack-audio.service
+After=jack-audio.service
+
+[Service]
+ExecStart=/usr/bin/alsa_out -d hw:USB,0 -r 48000 -p 1024 -q 1
+Type=exec
+
+

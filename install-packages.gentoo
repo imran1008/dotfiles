@@ -1,0 +1,37 @@
+#!/bin/bash
+
+PACKAGES=(
+	fish
+	dev-vcs/git
+	app-crypt/gnupg
+	htop
+	neomutt
+	neovim
+	tmux
+	vifm
+	weechat
+)
+
+DESKTOP_PACKAGES=(
+	alacritty
+	grim
+	mplayer
+	pipewire
+	pulseaudio
+	slurp
+	sway
+	waybar
+)
+
+function main() {
+	local target=${1}
+
+	if [ "${target}" != "desktop" ]; then
+		PACKAGES=("${PACKAGES[@]}" "${DESKTOP_PACKAGES[@]}")
+	fi
+
+	emerge -DNavun ${PACKAGES[*]}
+}
+
+main $@
+

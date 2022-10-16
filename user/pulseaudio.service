@@ -1,0 +1,9 @@
+[Unit]
+Description=Pulseaudio server
+Requires=jack-audio.service
+After=jack-audio.service
+
+[Service]
+ExecStart=/usr/bin/pulseaudio
+Type=exec
+
