@@ -100,52 +100,54 @@ set -g theme_project_dir_length 1
 set -g theme_newline_cursor no
 set -g theme_newline_prompt '$ '
 
+if test "$fish_key_bindings" = "fish_vi_key_bindings"
 # Remapping keys for colemak dhm
-bind --user -M insert o self-insert expand-abbr
-bind --user m backward-char
-bind --user i forward-char
-bind --user -m insert y insert-line-under repaint-mode
-bind --user -m insert Y insert-line-over repaint-mode
-bind --user -m insert u repaint-mode
-bind --user -m insert U beginning-of-line repaint-mode
-bind --user -m visual d begin-selection repaint-mode
-bind --user l undo
-bind --user e up-or-search
-bind --user n down-or-search
-bind --user v backward-word
-bind --user V backward-bigword
-bind --user f forward-single-char forward-word backward-char
-bind --user F forward-bigword backward-char
-bind --user s kill-line
-bind --user -m insert r delete-char repaint-mode
-bind --user -m insert R kill-whole-line repaint-mode
-bind --user N end-of-line delete-char
-bind --user E man\ \(commandline\ -t\)\ 2\>/dev/null\;\ or\ echo\ -n\ \\a
-bind --user J kill-whole-line yank
-bind --user t forward-jump
-bind --user T backward-jump
-bind --user b forward-jump-till
-bind --user B backward-jump-till
-bind --user o repeat-jump
-bind --user ';' forward-char yank
-bind --user ':' yank
-bind --user -m replace_one p repaint-mode
-bind --user -m replace P repaint-mode
-bind --user -M visual m backward-char
-bind --user -M visual i forward-char
-bind --user -M visual e up-line
-bind --user -M visual n down-line
-bind --user -M visual v backward-word
-bind --user -M visual V backward-bigword
-bind --user -M visual f forward-word
-bind --user -M visual F forward-bigword
-bind --user -M visual y swap-selection-start-stop repaint-mode
-bind --user -M visual t forward-jump
-bind --user -M visual b forward-jump-till
-bind --user -M visual T backward-jump
-bind --user -M visual B backward-jump-till
-bind --user -M visual -m insert r kill-selection end-selection repaint-mode
-bind --user -M visual -m default s kill-selection end-selection repaint-mode
-bind --user -M visual -m default j kill-selection yank end-selection repaint-mode
+	bind --user -M insert o self-insert expand-abbr
+	bind --user m backward-char
+	bind --user i forward-char
+	bind --user -m insert y insert-line-under repaint-mode
+	bind --user -m insert Y insert-line-over repaint-mode
+	bind --user -m insert u repaint-mode
+	bind --user -m insert U beginning-of-line repaint-mode
+	bind --user -m visual d begin-selection repaint-mode
+	bind --user l undo
+	bind --user e up-or-search
+	bind --user n down-or-search
+	bind --user v backward-word
+	bind --user V backward-bigword
+	bind --user f forward-single-char forward-word backward-char
+	bind --user F forward-bigword backward-char
+	bind --user s kill-line
+	bind --user -m insert r delete-char repaint-mode
+	bind --user -m insert R kill-whole-line repaint-mode
+	bind --user N end-of-line delete-char
+	bind --user E man\ \(commandline\ -t\)\ 2\>/dev/null\;\ or\ echo\ -n\ \\a
+	bind --user J kill-whole-line yank
+	bind --user t forward-jump
+	bind --user T backward-jump
+	bind --user b forward-jump-till
+	bind --user B backward-jump-till
+	bind --user o repeat-jump
+	bind --user ';' forward-char yank
+	bind --user ':' yank
+	bind --user -m replace_one p repaint-mode
+	bind --user -m replace P repaint-mode
+	bind --user -M visual m backward-char
+	bind --user -M visual i forward-char
+	bind --user -M visual e up-line
+	bind --user -M visual n down-line
+	bind --user -M visual v backward-word
+	bind --user -M visual V backward-bigword
+	bind --user -M visual f forward-word
+	bind --user -M visual F forward-bigword
+	bind --user -M visual y swap-selection-start-stop repaint-mode
+	bind --user -M visual t forward-jump
+	bind --user -M visual b forward-jump-till
+	bind --user -M visual T backward-jump
+	bind --user -M visual B backward-jump-till
+	bind --user -M visual -m insert r kill-selection end-selection repaint-mode
+	bind --user -M visual -m default s kill-selection end-selection repaint-mode
+	bind --user -M visual -m default j kill-selection yank end-selection repaint-mode
+end
 
 
