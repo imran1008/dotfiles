@@ -47,7 +47,6 @@ export CCACHE_BASEDIR="$HOME/src"
 export CCACHE_SLOPPINESS="include_file_mtime"
 export DISTCC_HOSTS="localhost"
 
-export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
 export PATH="/usr/lib/ccache/bin:$HOME/bin:$HOME/src/depot_tools:$PATH"
 export EDITOR=nvim
 export VISUAL=nvim
@@ -78,7 +77,7 @@ set -g theme_display_nix no
 set -g theme_display_ruby no
 set -g theme_display_nvm no
 set -g theme_display_user ssh
-set -g theme_display_hostname ssh
+set -g theme_display_hostname yes   # default: ssh
 set -g theme_display_vi yes
 set -g theme_display_date no
 set -g theme_display_cmd_duration yes
@@ -93,7 +92,7 @@ set -g theme_powerline_fonts no
 set -g theme_nerd_fonts yes
 set -g theme_show_exit_status yes
 set -g theme_display_jobs_verbose yes
-set -g default_user your_normal_user
+set -g default_user imran  # default: your_default_user
 set -g theme_color_scheme dracula
 set -g fish_prompt_pwd_dir_length 0
 set -g theme_project_dir_length 1

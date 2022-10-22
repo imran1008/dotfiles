@@ -29,7 +29,7 @@ export CCACHE_BASEDIR="${HOME}/src"
 export CCACHE_SLOPPINESS="include_file_mtime"
 export DISTCC_HOSTS="localhost"
 
-export PS1='%F{blue}[%F{cyan}%n%F{yellow} %~%F{blue}]$%F{reset_color%} '
+export PS1='%F{blue}[%F{cyan}%n%F{green}@%F{magenta}%m%F{yellow} %~%F{blue}]$%F{reset_color%} '
 export PATH="/usr/lib/ccache/bin:${HOME}/bin:${PATH}"
 export EDITOR=nvim
 export VISUAL=nvim
