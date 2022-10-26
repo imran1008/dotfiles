@@ -23,28 +23,39 @@ local function init_telescope(use, extensions)
 	end
 end
 
-local function init_cmp_autocomplete(use)
+local function init_cmp_autocomplete(use, snippet)
 	use 'hrsh7th/cmp-nvim-lsp'
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-cmdline'
 	use 'hrsh7th/nvim-cmp'
 
-	-- For vsnip users.
-	use 'hrsh7th/cmp-vsnip'
-	use 'hrsh7th/vim-vsnip'
+	local snippet_source = nil
 
-	-- For luasnip users.
-	-- use 'L3MON4D3/LuaSnip'
-	-- use 'saadparwaiz1/cmp_luasnip'
+	if snippet == "vsnip" then
+		use 'hrsh7th/cmp-vsnip'
+		use 'hrsh7th/vim-vsnip'
 
-	-- For ultisnips users.
-	-- use 'SirVer/ultisnips'
-	-- use 'quangnguyen30192/cmp-nvim-ultisnips'
+		snippet_source = { name = 'vsnip' }
 
-	-- For snippy users.
-	-- use 'dcampos/nvim-snippy'
-	-- use 'dcampos/cmp-snippy'
+	elseif snippet == "luasnip" then
+		use 'L3MON4D3/LuaSnip'
+		use 'saadparwaiz1/cmp_luasnip'
+
+		snippet_source = { name = 'luasnip' }
+
+	elseif snippet == "ultisnips" then
+		use 'SirVer/ultisnips'
+		use 'quangnguyen30192/cmp-nvim-ultisnips'
+
+		snippet_source = { name = 'ultisnips' }
+
+	elseif snippet == "snippy" then
+		use 'dcampos/nvim-snippy'
+		use 'dcampos/cmp-snippy'
+
+		snippet_source = { name = 'snippy' }
+	end
 
 	local cmp = require('cmp')
 	assert(cmp)
@@ -53,10 +64,15 @@ local function init_cmp_autocomplete(use)
 		snippet = {
 			-- REQUIRED - you must specify a snippet engine
 			expand = function(args)
-				vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-				-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-				-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-				-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+				if snippet == "vsnip" then
+					vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+				elseif snippet == "luasnip" then
+					require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+				elseif snippet == "snippy" then
+					require('snippy').expand_snippet(args.body) -- For `snippy` users.
+				elseif snippet == "ultisnips" then
+					vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+				end
 			end,
 		},
 		window = {
@@ -72,10 +88,7 @@ local function init_cmp_autocomplete(use)
 		}),
 		sources = cmp.config.sources({
 			{ name = 'nvim_lsp' },
-			{ name = 'vsnip' }, -- For vsnip users.
-			-- { name = 'luasnip' }, -- For luasnip users.
-			-- { name = 'ultisnips' }, -- For ultisnips users.
-			-- { name = 'snippy' }, -- For snippy users.
+			snippet_source
 		}, {
 			{ name = 'buffer' },
 		})
@@ -108,7 +121,7 @@ local function init_cmp_autocomplete(use)
 		})
 	})
 
-	return require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+	return require('cmp_nvim_lsp').default_capabilities()
 end
 
 local function init_coq_autocomplete(use)
@@ -180,7 +193,14 @@ packer.startup(function(use)
 	--
 	-- CMP is the clear winner
 	--
-	local capabilities = init_cmp_autocomplete(use)
+
+    -- List of snippet plugens:
+	--    - vsnip
+	--    - luasnip
+	--    - ultisnips
+	--    - snippy
+
+	local capabilities = init_cmp_autocomplete(use, nil)
 	-- local capabilities = init_coq_autocomplete(use)
 
 	init_lspconfig(use, capabilities)

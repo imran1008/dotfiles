@@ -99,8 +99,8 @@ set -g theme_project_dir_length 1
 set -g theme_newline_cursor no
 set -g theme_newline_prompt '$ '
 
-if test "$fish_key_bindings" = "fish_vi_key_bindings"
 # Remapping keys for colemak dhm
+if test "$fish_key_bindings" = "fish_vi_key_bindings"
 	bind --user -M insert o self-insert expand-abbr
 	bind --user m backward-char
 	bind --user i forward-char
