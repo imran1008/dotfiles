@@ -2,7 +2,7 @@
 Description=Protonmail Bridge
 
 [Service]
-ExecStart=/usr/bin/protonmail-bridge
+ExecStart=/usr/bin/proton-mail-bridge
 Type=exec
 
 [Install]
