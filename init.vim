@@ -86,7 +86,7 @@ filetype plugin on
 """"""""""""""""""""""""""""""""
 " => Plugins
 """"""""""""""""""""""""""""""""
-lua require('plugins')
+lua require('init')
 
 set completeopt=menu,menuone,noselect
 

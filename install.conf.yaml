@@ -14,7 +14,7 @@
     ~/.config/gtk-3.0/settings.ini: gtk3-settings.ini
     ~/.config/mutt/custom.muttrc: custom.muttrc
     ~/.config/nvim/init.vim: init.vim
-    ~/.config/nvim/lua/plugins.lua: nvim-plugins.lua
+    ~/.config/nvim/lua/init.lua: nvim-init.lua
     ~/.config/pulse/daemon.conf: pulse-daemon.conf
     ~/.config/sway/config: sway-config
     ~/.config/systemd/user: user

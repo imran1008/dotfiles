@@ -1,16 +1,16 @@
 
------------------------------------------
--- Packer -------------------------------
------------------------------------------
-
-local packer = require('packer')
-packer.init {
-	display = {
-		open_fn = require('packer.util').float,
-		show_all_info = true,
-		prompt_border = 'double'
+local function init_packer()
+	local packer = require('packer')
+	packer.init {
+		display = {
+			open_fn = require('packer.util').float,
+			show_all_info = true,
+			prompt_border = 'double'
+		}
 	}
-}
+
+	return packer
+end
 
 local function init_telescope(use, extensions)
 	use 'nvim-telescope/telescope.nvim'		-- fuzzy finder
@@ -164,74 +164,85 @@ local function init_lspconfig(use, capabilities)
 	lspconfig.tsserver.setup({ })
 end
 
-packer.startup(function(use)
-	use 'wbthomason/packer.nvim'	-- plugin manager
-	use 'kyazdani42/nvim-tree.lua'	-- nerdtree like plugin
-	use 'vimwiki/vimwiki'			-- vimwiki
-	use 'ap/vim-css-color'			-- colorize #aabbcc
-	use 'dracula/vim'				-- dracula theme
-	use 'vifm/vifm.vim'				-- vifm file manager
-	use 'nvim-lua/plenary.nvim'		-- needed by telescope, harpoon
-	use 'ThePrimeagen/harpoon'		-- harpoon - fast switch to small set of files per project
+local function init_nvim_tree()
+	require('nvim-tree').setup({
+		sort_by = "case_sensitive",
+		view = {
+			adaptive_size = true,
+			mappings = {
+				list = {
+					{ key = "u", action = "dir_up" },
 
-	use 'tpope/vim-fugitive'		-- not used yet
-	use 'sakhnik/nvim-gdb'			-- nto used yet
-
-	init_telescope(use, {'harpoon'})
-
-	-- CMP is better for:
-	--    - color highlighting within the search results
-	--    - fuzzy searches
-	--    - no foul language in the documentation
-	--    - more popular (and used by Primeagen)
-	--    - doesn't require additional vim commands to start plugin
-	--    - does autocompletion in the vim command bar
-	--
-	-- COQ is better for:
-	--    - searching local filesystem
-	--    - supposedly faster
-	--
-	-- CMP is the clear winner
-	--
-
-    -- List of snippet plugens:
-	--    - vsnip
-	--    - luasnip
-	--    - ultisnips
-	--    - snippy
-
-	local capabilities = init_cmp_autocomplete(use, nil)
-	-- local capabilities = init_coq_autocomplete(use)
-
-	init_lspconfig(use, capabilities)
-end)
-
------------------------------------------
--- Nvim Tree ----------------------------
------------------------------------------
-
-require('nvim-tree').setup({
-	sort_by = "case_sensitive",
-	view = {
-		adaptive_size = true,
-		mappings = {
-			list = {
-				{ key = "u", action = "dir_up" },
-
-				-- The default 'm' is now used to move left
-				{ key = "h", action = "toggle_mark" }
+					-- The default 'm' is now used to move left
+					{ key = "h", action = "toggle_mark" }
+				},
 			},
 		},
-	},
-	renderer = {
-		group_empty = true,
-	},
-	filters = {
-		dotfiles = true,
-	},
-	remove_keymaps = {
-		"O", "m"
-	},
-})
+		renderer = {
+			group_empty = true,
+		},
+		filters = {
+			dotfiles = true,
+		},
+		remove_keymaps = {
+			"O", "m"
+		},
+	})
+end
 
+local function main()
+	-- Disable netrw in favor of nvim tree
+	vim.g.loaded_netrw = 1
+	vim.g.loaded_netrwPlugin = 1
+
+	-- set termguicolors to enable highlight groups
+	vim.opt.termguicolors = true
+
+	local packer = init_packer()
+
+	packer.startup(function(use)
+		use 'wbthomason/packer.nvim'	-- plugin manager
+		use 'kyazdani42/nvim-tree.lua'	-- nerdtree like plugin
+		use 'vimwiki/vimwiki'			-- vimwiki
+		use 'ap/vim-css-color'			-- colorize #aabbcc
+		use 'dracula/vim'				-- dracula theme
+		use 'vifm/vifm.vim'				-- vifm file manager
+		use 'nvim-lua/plenary.nvim'		-- needed by telescope, harpoon
+		use 'ThePrimeagen/harpoon'		-- harpoon - fast switch to small set of files per project
+
+		use 'tpope/vim-fugitive'		-- not used yet
+		use 'sakhnik/nvim-gdb'			-- nto used yet
+
+		init_telescope(use, {'harpoon'})
+
+		-- CMP is better for:
+		--    - color highlighting within the search results
+		--    - fuzzy searches
+		--    - no foul language in the documentation
+		--    - more popular (and used by Primeagen)
+		--    - doesn't require additional vim commands to start plugin
+		--    - does autocompletion in the vim command bar
+		--
+		-- COQ is better for:
+		--    - searching local filesystem
+		--    - supposedly faster
+		--
+		-- CMP is the clear winner
+		--
+
+		-- List of snippet plugens:
+		--    - vsnip
+		--    - luasnip
+		--    - ultisnips
+		--    - snippy
+
+		local capabilities = init_cmp_autocomplete(use, nil)
+		-- local capabilities = init_coq_autocomplete(use)
+
+		init_lspconfig(use, capabilities)
+		init_nvim_tree()
+	end)
+end
+
+main()
 
